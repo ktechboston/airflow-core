@@ -1,0 +1,40 @@
+version: '2.1'
+services:
+    docker_postgres:
+        image: postgres:9.6
+        container_name: "docker_postgres"
+        ports:
+          - 5433:5432
+        env_file: .env
+        environment:
+            POSTGRES_DB: airflow
+            POSTGRES_USER: airflow
+            POSTGRES_PASSWORD:
+            PGDATA: /var/lib/postgresql/data/pgdata
+        volumes:
+            - airflow-docker-database:/var/lib/postgresql/data/pgdata
+
+    webserver:
+        image: puckel/docker-airflow:1.10.9
+        restart: always
+        depends_on:
+            - docker_postgres
+        env_file: .env
+        environment:
+            - LOAD_EX=n
+            - EXECUTOR=Local
+            - FERNET_KEY
+            - AIRFLOW__CORE__SQL_ALCHEMY_CONN
+        volumes:
+            - ${DAGS_FOLDER}:/usr/local/airflow/dags
+        ports:
+            - "8080:8080"
+        command: webserver
+        healthcheck:
+            test: ["CMD-SHELL", "[ -f /root/home/airflow/airflow-webserver.pid ]"]
+            interval: 30s
+            timeout: 30s
+            retries: 3
+
+volumes:
+    airflow-docker-database:
