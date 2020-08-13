@@ -31,12 +31,12 @@ Pre-requisites
 Setup
 ---
 
-1. Copy [.env.template]() to [.env]()
-2. In [.env](), fill in values for the fernet key and postgres password:
+1. Copy [.env.template](.env.template) to [.env](.env)
+2. In [.env](.env), fill in values for the fernet key and postgres password:
       - POSTGRES_PASSWORD can be any valid password
       - FERNET_KEY must be a valid fernet key. See [these instructions](https://bcb.github.io/airflow/fernet-key)
         to generate a valid fernet key
-3. Create a folder to contain your new dags (you can use [example-dags]() to get started)
+3. Create a folder to contain your new dags (you can use [example-dags](example-dags) to get started)
 
 Execution
 ---
@@ -48,8 +48,10 @@ command:
 DAGS_FOLDER=./example-dags/ docker-compose up -d
 ```
 
+You can supply a dags folder of your choosing.
+
 Additional Configuration
 ---
 
-Any configuration parameter can be applied to your instance of Airflow simply by adding an extra line to [.env](). Refer
-to Airflow documentation for information about Airflow configuration parameters.
+Any configuration parameter can be applied to your instance of Airflow simply by adding an extra line to [.env](.env).
+Refer to Airflow documentation for information about Airflow configuration parameters.
