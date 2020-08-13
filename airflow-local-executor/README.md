@@ -12,11 +12,11 @@ develop new Airflow DAGS outside of any special considerations for specific Airf
 What is this for?
 ---
 
-####It should help:
+#### It should help:
 - Simplify local development and testing of Airflow dags
 - Allow a user to run an instance of Airflow without add-ons
 
-####It does not:
+#### It does not:
 - Emulate any particular Airflow deployment
 - Allow development using non-standard libraries
 
