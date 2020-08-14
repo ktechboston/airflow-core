@@ -48,7 +48,15 @@ command:
 DAGS_FOLDER=./example-dags/ docker-compose up -d
 ```
 
+Note: DAGS_FOLDER must begin with `.` or `/` or else it will be interpreted as the name of a docker volume.
+
 You can supply a dags folder of your choosing.
+
+Outcome
+---
+
+Airflow should be accessible at `localhost:8080`. Airflow data should be stored in a postgres database accessible at
+`localhost:5433`.
 
 Additional Configuration
 ---
