@@ -48,7 +48,8 @@ command:
 DAGS_FOLDER=./example-dags/ docker-compose up -d
 ```
 
-Note: DAGS_FOLDER must begin with `.` or `/` or else it will be interpreted as the name of a docker volume.
+Note: In Unix environments (Linux, OSX), you can indicate the folder containing your dags with `./a/relative/path/` or
+`/an/absolute/path` but if you want to use a relative path it must begin with `.`.
 
 You can supply a dags folder of your choosing.
 
